@@ -41,7 +41,7 @@ npm Install
 ```
 
 ### Environment Variables
-Create a .env file in the root directory and add the following environment variables:
+- Create a .env file in the root directory and add the following environment variables:
 
 - Replace your-supabase-url and your-supabase-anon-key with your actual Supabase project URL and anonymous key.
 
