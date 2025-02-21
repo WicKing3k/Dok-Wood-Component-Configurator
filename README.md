@@ -1,4 +1,4 @@
-# Dok-Wood Component Configurator
+# 🌟Dok-Wood Component Configurator🌟
 
 The Dok-Wood Component Configurator is a web application designed to manage and configure wood components. It includes a material database, a component configurator, and project management features. The application is built using modern web technologies and provides a user-friendly interface for managing wood components and their properties.
 
