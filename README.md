@@ -32,8 +32,9 @@ Before you begin, ensure you have met the following requirements:
 
 ```bash
 git clone https://github.com/your-username/dok-wood-component-configurator.git
-```
+
 cd dok-wood-component-configurator
+```
 
 ### Install Dependencies
 ```bash
