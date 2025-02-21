@@ -15,31 +15,53 @@ import { PricingDetails } from './wizard/PricingDetails';
 
 const materialSchema = z.object({
   // Basic Info
-  designation: z.string().min(1, 'Name is required'),
-  category: z.string().min(1, 'Category is required'),
-  articleNumber: z.string().min(1, 'Article number is required'),
-  
-  // Technical Details
-  manufacturer: z.string().optional(),
-  spatialLoad: z.number().nullable().optional(),
-  areaLoad: z.number().nullable().optional(),
-  densitySource: z.string().optional(),
-  lambdaValue: z.number().nullable().optional(),
-  sdValue: z.number().nullable().optional(),
-  muDry: z.number().nullable().optional(),
-  muWet: z.number().nullable().optional(),
-  lambdaMuSource: z.string().optional(),
-  vkfClassification: z.string().optional(),
-  
-  // Storage Details
-  unit: z.string().min(1, 'Unit is required'),
-  minStock: z.number().min(0, 'Minimum stock must be positive'),
-  location: z.string().min(1, 'Storage location is required'),
-  
-  // Pricing Details
-  price: z.number().min(0, 'Price must be positive'),
-  supplier: z.string().min(1, 'Supplier is required'),
-  orderNumber: z.string().min(1, 'Order number is required'),
+  bezeichnung: z.string().min(1, 'Bezeichnung is required'),
+  rohstoff: z.string().optional(),
+  hersteller: z.string().optional(),
+  breite: z.number().nullable().optional(),
+  hoehe: z.number().nullable().optional(),
+  laenge: z.number().nullable().optional(),
+  erscheinungsklasse: z.string().optional(),
+  oberflaeche: z.string().optional(),
+  keywords: z.string().optional(),
+  lambda: z.number().nullable().optional(),
+  sd: z.number().nullable().optional(),
+  muTrocken: z.number().nullable().optional(),
+  muFeucht: z.number().nullable().optional(),
+  spezWaermekapazitaet: z.number().nullable().optional(),
+  quelleBauphysik: z.string().optional(),
+  rohdichte: z.number().nullable().optional(),
+  flaechenlast: z.number().nullable().optional(),
+  quelleRohdichte: z.string().optional(),
+  aufbau: z.string().optional(),
+  verleimung: z.string().optional(),
+  festigkeitsklasse: z.string().optional(),
+  baustoffklasseVKF: z.string().optional(),
+  baustoffklasseEU: z.string().optional(),
+  baustoffklasseDE: z.string().optional(),
+  zusatzeigenschaft: z.string().optional(),
+  quelleBaustoffklasse: z.string().optional(),
+  rohdichteCharakteristisch: z.number().nullable().optional(),
+  abbrandrateEindimensional: z.number().nullable().optional(),
+  abbrandrateIdeell: z.number().nullable().optional(),
+  materialtypBemessung: z.string().optional(),
+  quelleBrandschutzbemessungswerte: z.string().optional(),
+  dynamischeSteifigkeit: z.number().nullable().optional(),
+  ubpID: z.string().optional(),
+  ecoZertifizierung: z.string().optional(),
+  oekobilanz: z.string().optional(),
+  blauerEngel: z.boolean().optional(),
+  produktdatenblatt: z.string().optional(),
+  dopLeistungserklaerung: z.string().optional(),
+  herstellernachweis: z.string().optional(),
+  einheit: z.string().min(1, 'Einheit is required'),
+  richtpreisFertigVerbaut: z.number().min(0, 'Richtpreis must be positive'),
+  schnittstelleKalkulation: z.string().optional(),
+  zusatzinfo: z.string().optional(),
+  zusatzinfo2: z.string().optional(),
+  textur3d: z.string().optional(),
+  textur2d: z.string().optional(),
+  produktID: z.string().optional(),
 });
 
 type MaterialFormData = z.infer<typeof materialSchema>;
@@ -56,17 +78,25 @@ export function MaterialWizard({ isOpen, onClose }: MaterialWizardProps) {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   const methods = useForm<MaterialFormData>({
     resolver: zodResolver(materialSchema),
     mode: 'onChange',
     defaultValues: {
-      spatialLoad: null,
-      areaLoad: null,
-      lambdaValue: null,
-      sdValue: null,
-      muDry: null,
-      muWet: null,
+      breite: null,
+      hoehe: null,
+      laenge: null,
+      lambda: null,
+      sd: null,
+      muTrocken: null,
+      muFeucht: null,
+      spezWaermekapazitaet: null,
+      rohdichte: null,
+      flaechenlast: null,
+      rohdichteCharakteristisch: null,
+      abbrandrateEindimensional: null,
+      abbrandrateIdeell: null,
+      dynamischeSteifigkeit: null,
     },
   });
 
@@ -97,13 +127,13 @@ export function MaterialWizard({ isOpen, onClose }: MaterialWizardProps) {
   const getFieldsForStep = (stepNumber: number): (keyof MaterialFormData)[] => {
     switch (stepNumber) {
       case 1:
-        return ['designation', 'category', 'articleNumber'];
+        return ['bezeichnung', 'rohstoff', 'hersteller', 'breite', 'hoehe', 'laenge', 'erscheinungsklasse', 'oberflaeche', 'keywords'];
       case 2:
-        return ['manufacturer', 'spatialLoad', 'areaLoad', 'densitySource', 'lambdaValue', 'sdValue', 'muDry', 'muWet', 'lambdaMuSource', 'vkfClassification'];
+        return ['lambda', 'sd', 'muTrocken', 'muFeucht', 'spezWaermekapazitaet', 'quelleBauphysik', 'rohdichte', 'flaechenlast', 'quelleRohdichte', 'aufbau', 'verleimung', 'festigkeitsklasse', 'baustoffklasseVKF', 'baustoffklasseEU', 'baustoffklasseDE', 'zusatzeigenschaft', 'quelleBaustoffklasse', 'rohdichteCharakteristisch', 'abbrandrateEindimensional', 'abbrandrateIdeell', 'materialtypBemessung', 'quelleBrandschutzbemessungswerte', 'dynamischeSteifigkeit'];
       case 3:
-        return ['unit', 'minStock', 'location'];
+        return ['einheit', 'richtpreisFertigVerbaut', 'schnittstelleKalkulation', 'zusatzinfo', 'zusatzinfo2', 'textur3d', 'textur2d', 'produktID'];
       case 4:
-        return ['price', 'supplier', 'orderNumber'];
+        return ['ecoZertifizierung', 'oekobilanz', 'blauerEngel', 'produktdatenblatt', 'dopLeistungserklaerung', 'herstellernachweis'];
       default:
         return [];
     }
@@ -114,25 +144,59 @@ export function MaterialWizard({ isOpen, onClose }: MaterialWizardProps) {
       setIsSubmitting(true);
       setError(null);
       const data = methods.getValues();
-      
+
       if (!user?.id) {
         throw new Error('User not authenticated');
       }
 
       await addMaterial({
-        designation: data.designation,
-        manufacturer: data.manufacturer || null,
-        spatial_load: data.spatialLoad || null,
-        area_load: data.areaLoad || null,
-        density_source: data.densitySource || null,
-        lambda_value: data.lambdaValue || null,
-        sd_value: data.sdValue || null,
-        mu_dry: data.muDry || null,
-        mu_wet: data.muWet || null,
-        lambda_mu_source: data.lambdaMuSource || null,
-        vkf_classification: data.vkfClassification || null,
-        unit: data.unit,
-        price: data.price,
+        bezeichnung: data.bezeichnung,
+        rohstoff: data.rohstoff || null,
+        hersteller: data.hersteller || null,
+        breite: data.breite || null,
+        hoehe: data.hoehe || null,
+        laenge: data.laenge || null,
+        erscheinungsklasse: data.erscheinungsklasse || null,
+        oberflaeche: data.oberflaeche || null,
+        keywords: data.keywords || null,
+        lambda: data.lambda || null,
+        sd: data.sd || null,
+        mu_trocken: data.muTrocken || null,
+        mu_feucht: data.muFeucht || null,
+        spez_waermekapazitaet: data.spezWaermekapazitaet || null,
+        quelle_bauphysik: data.quelleBauphysik || null,
+        rohdichte: data.rohdichte || null,
+        flaechenlast: data.flaechenlast || null,
+        quelle_rohdichte: data.quelleRohdichte || null,
+        aufbau: data.aufbau || null,
+        verleimung: data.verleimung || null,
+        festigkeitsklasse: data.festigkeitsklasse || null,
+        baustoffklasse_vkf: data.baustoffklasseVKF || null,
+        baustoffklasse_eu: data.baustoffklasseEU || null,
+        baustoffklasse_de: data.baustoffklasseDE || null,
+        zusatzeigenschaft: data.zusatzeigenschaft || null,
+        quelle_baustoffklasse: data.quelleBaustoffklasse || null,
+        rohdichte_charakteristisch: data.rohdichteCharakteristisch || null,
+        abbrandrate_eindimensional: data.abbrandrateEindimensional || null,
+        abbrandrate_ideell: data.abbrandrateIdeell || null,
+        materialtyp_bemessung: data.materialtypBemessung || null,
+        quelle_brandschutzbemessungswerte: data.quelleBrandschutzbemessungswerte || null,
+        dynamische_steifigkeit: data.dynamischeSteifigkeit || null,
+        ubp_id: data.ubpID || null,
+        eco_zertifizierung: data.ecoZertifizierung || null,
+        oekobilanz: data.oekobilanz || null,
+        blauer_engel: data.blauerEngel || null,
+        produktdatenblatt: data.produktdatenblatt || null,
+        dop_leistungserklaerung: data.dopLeistungserklaerung || null,
+        herstellernachweis: data.herstellernachweis || null,
+        einheit: data.einheit,
+        richtpreis_fertig_verbaut: data.richtpreisFertigVerbaut,
+        schnittstelle_kalkulation: data.schnittstelleKalkulation || null,
+        zusatzinfo: data.zusatzinfo || null,
+        zusatzinfo2: data.zusatzinfo2 || null,
+        textur_3d: data.textur3d || null,
+        textur_2d: data.textur2d || null,
+        produkt_id: data.produktID || null,
         created_by: user.id,
       });
 
@@ -183,7 +247,7 @@ export function MaterialWizard({ isOpen, onClose }: MaterialWizardProps) {
               >
                 {t('common.cancel')}
               </button>
-              
+
               <div className="space-x-2">
                 {step > 1 && (
                   <button
@@ -195,7 +259,7 @@ export function MaterialWizard({ isOpen, onClose }: MaterialWizardProps) {
                     {t('common.back')}
                   </button>
                 )}
-                
+
                 <button
                   type="button"
                   onClick={handleNext}

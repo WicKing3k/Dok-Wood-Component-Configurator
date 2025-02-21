@@ -8,54 +8,121 @@ export function BasicInfo() {
   return (
     <div className="space-y-4">
       <div>
-        <label htmlFor="designation" className="block text-sm font-medium text-gray-700">
-          {t('materials.properties.designation')} *
+        <label htmlFor="bezeichnung" className="block text-sm font-medium text-gray-700">
+          {t('materials.properties.bezeichnung')} *
         </label>
         <input
           type="text"
-          id="designation"
-          {...register('designation')}
+          id="bezeichnung"
+          {...register('bezeichnung')}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
         />
-        {errors.designation && (
+        {errors.bezeichnung && (
           <p className="mt-1 text-sm text-red-600">
-            {errors.designation.message as string}
+            {errors.bezeichnung.message as string}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="category" className="block text-sm font-medium text-gray-700">
-          {t('materials.properties.category')} *
+        <label htmlFor="rohstoff" className="block text-sm font-medium text-gray-700">
+          {t('materials.properties.rohstoff')}
         </label>
         <input
           type="text"
-          id="category"
-          {...register('category')}
+          id="rohstoff"
+          {...register('rohstoff')}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
         />
-        {errors.category && (
-          <p className="mt-1 text-sm text-red-600">
-            {errors.category.message as string}
-          </p>
-        )}
       </div>
 
       <div>
-        <label htmlFor="articleNumber" className="block text-sm font-medium text-gray-700">
-          {t('materials.properties.articleNumber')} *
+        <label htmlFor="hersteller" className="block text-sm font-medium text-gray-700">
+          {t('materials.properties.hersteller')}
         </label>
         <input
           type="text"
-          id="articleNumber"
-          {...register('articleNumber')}
+          id="hersteller"
+          {...register('hersteller')}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
         />
-        {errors.articleNumber && (
-          <p className="mt-1 text-sm text-red-600">
-            {errors.articleNumber.message as string}
-          </p>
-        )}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label htmlFor="breite" className="block text-sm font-medium text-gray-700">
+            {t('materials.properties.breite')}
+          </label>
+          <input
+            type="number"
+            id="breite"
+            step="0.01"
+            {...register('breite', { valueAsNumber: true })}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="hoehe" className="block text-sm font-medium text-gray-700">
+            {t('materials.properties.hoehe')}
+          </label>
+          <input
+            type="number"
+            id="hoehe"
+            step="0.01"
+            {...register('hoehe', { valueAsNumber: true })}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="laenge" className="block text-sm font-medium text-gray-700">
+            {t('materials.properties.laenge')}
+          </label>
+          <input
+            type="number"
+            id="laenge"
+            step="0.01"
+            {...register('laenge', { valueAsNumber: true })}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="erscheinungsklasse" className="block text-sm font-medium text-gray-700">
+          {t('materials.properties.erscheinungsklasse')}
+        </label>
+        <input
+          type="text"
+          id="erscheinungsklasse"
+          {...register('erscheinungsklasse')}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="oberflaeche" className="block text-sm font-medium text-gray-700">
+          {t('materials.properties.oberflaeche')}
+        </label>
+        <input
+          type="text"
+          id="oberflaeche"
+          {...register('oberflaeche')}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="keywords" className="block text-sm font-medium text-gray-700">
+          {t('materials.properties.keywords')}
+        </label>
+        <input
+          type="text"
+          id="keywords"
+          {...register('keywords')}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-orange focus:ring-brand-orange sm:text-sm"
+        />
       </div>
     </div>
   );

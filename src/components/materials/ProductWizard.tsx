@@ -15,31 +15,59 @@ import { PricingDetails } from './wizard/PricingDetails';
 
 const productSchema = z.object({
   // Basic Info
-  designation: z.string().min(1, 'Name is required'),
-  category: z.string().min(1, 'Category is required'),
-  articleNumber: z.string().min(1, 'Article number is required'),
+  bezeichnung: z.string().min(1, 'Bezeichnung is required'),
+  rohstoff: z.string().optional(),
+  hersteller: z.string().optional(),
+  breite: z.number().nullable().optional(),
+  hoehe: z.number().nullable().optional(),
+  laenge: z.number().nullable().optional(),
+  erscheinungsklasse: z.string().optional(),
+  oberflaeche: z.string().optional(),
+  keywords: z.string().optional(),
   
   // Technical Details
-  manufacturer: z.string().optional(),
-  spatialLoad: z.number().nullable().optional(),
-  areaLoad: z.number().nullable().optional(),
-  densitySource: z.string().optional(),
-  lambdaValue: z.number().nullable().optional(),
-  sdValue: z.number().nullable().optional(),
-  muDry: z.number().nullable().optional(),
-  muWet: z.number().nullable().optional(),
-  lambdaMuSource: z.string().optional(),
-  vkfClassification: z.string().optional(),
+  lambda: z.number().nullable().optional(),
+  sd: z.number().nullable().optional(),
+  muTrocken: z.number().nullable().optional(),
+  muFeucht: z.number().nullable().optional(),
+  spezWaermekapazitaet: z.number().nullable().optional(),
+  quelleBauphysik: z.string().optional(),
+  rohdichte: z.number().nullable().optional(),
+  flaechenlast: z.number().nullable().optional(),
+  quelleRohdichte: z.string().optional(),
+  aufbau: z.string().optional(),
+  verleimung: z.string().optional(),
+  festigkeitsklasse: z.string().optional(),
+  baustoffklasseVKF: z.string().optional(),
+  baustoffklasseEU: z.string().optional(),
+  baustoffklasseDE: z.string().optional(),
+  zusatzeigenschaft: z.string().optional(),
+  quelleBaustoffklasse: z.string().optional(),
+  rohdichteCharakteristisch: z.number().nullable().optional(),
+  abbrandrateEindimensional: z.number().nullable().optional(),
+  abbrandrateIdeell: z.number().nullable().optional(),
+  materialtypBemessung: z.string().optional(),
+  quelleBrandschutzbemessungswerte: z.string().optional(),
+  dynamischeSteifigkeit: z.number().nullable().optional(),
+  ubpID: z.string().optional(),
   
   // Storage Details
-  unit: z.string().min(1, 'Unit is required'),
-  minStock: z.number().min(0, 'Minimum stock must be positive'),
-  location: z.string().min(1, 'Storage location is required'),
+  einheit: z.string().min(1, 'Einheit is required'),
+  richtpreisFertigVerbaut: z.number().min(0, 'Richtpreis must be positive'),
+  schnittstelleKalkulation: z.string().optional(),
+  zusatzinfo: z.string().optional(),
+  zusatzinfo2: z.string().optional(),
+  textur3d: z.string().optional(),
+  textur2d: z.string().optional(),
+  produktID: z.string().optional(),
   
   // Pricing Details
-  price: z.number().min(0, 'Price must be positive'),
-  supplier: z.string().min(1, 'Supplier is required'),
-  orderNumber: z.string().min(1, 'Order number is required'),
+  ecoZertifizierung: z.string().optional(),
+  oekobilanz: z.string().optional(),
+  blauerEngel: z.boolean().optional(),
+  produktdatenblatt: z.string().optional(),
+  dopLeistungserklaerung: z.string().optional(),
+  herstellernachweis: z.string().optional(),
 });
 
 type ProductFormData = z.infer<typeof productSchema>;
@@ -61,12 +89,17 @@ export function ProductWizard({ isOpen, onClose }: ProductWizardProps) {
     resolver: zodResolver(productSchema),
     mode: 'onChange',
     defaultValues: {
-      spatialLoad: null,
-      areaLoad: null,
-      lambdaValue: null,
-      sdValue: null,
-      muDry: null,
-      muWet: null,
+      lambda: null,
+      sd: null,
+      muTrocken: null,
+      muFeucht: null,
+      spezWaermekapazitaet: null,
+      rohdichte: null,
+      flaechenlast: null,
+      rohdichteCharakteristisch: null,
+      abbrandrateEindimensional: null,
+      abbrandrateIdeell: null,
+      dynamischeSteifigkeit: null,
     },
   });
 
@@ -97,13 +130,13 @@ export function ProductWizard({ isOpen, onClose }: ProductWizardProps) {
   const getFieldsForStep = (stepNumber: number): (keyof ProductFormData)[] => {
     switch (stepNumber) {
       case 1:
-        return ['designation', 'category', 'articleNumber'];
+        return ['bezeichnung', 'rohstoff', 'hersteller', 'breite', 'hoehe', 'laenge', 'erscheinungsklasse', 'oberflaeche', 'keywords'];
       case 2:
-        return ['manufacturer', 'spatialLoad', 'areaLoad', 'densitySource', 'lambdaValue', 'sdValue', 'muDry', 'muWet', 'lambdaMuSource', 'vkfClassification'];
+        return ['lambda', 'sd', 'muTrocken', 'muFeucht', 'spezWaermekapazitaet', 'quelleBauphysik', 'rohdichte', 'flaechenlast', 'quelleRohdichte', 'aufbau', 'verleimung', 'festigkeitsklasse', 'baustoffklasseVKF', 'baustoffklasseEU', 'baustoffklasseDE', 'zusatzeigenschaft', 'quelleBaustoffklasse', 'rohdichteCharakteristisch', 'abbrandrateEindimensional', 'abbrandrateIdeell', 'materialtypBemessung', 'quelleBrandschutzbemessungswerte', 'dynamischeSteifigkeit', 'ubpID'];
       case 3:
-        return ['unit', 'minStock', 'location'];
+        return ['einheit', 'richtpreisFertigVerbaut', 'schnittstelleKalkulation', 'zusatzinfo', 'zusatzinfo2', 'textur3d', 'textur2d', 'produktID'];
       case 4:
-        return ['price', 'supplier', 'orderNumber'];
+        return ['ecoZertifizierung', 'oekobilanz', 'blauerEngel', 'produktdatenblatt', 'dopLeistungserklaerung', 'herstellernachweis'];
       default:
         return [];
     }
@@ -120,19 +153,53 @@ export function ProductWizard({ isOpen, onClose }: ProductWizardProps) {
       }
 
       await addProduct({
-        designation: data.designation,
-        manufacturer: data.manufacturer || null,
-        spatial_load: data.spatialLoad || null,
-        area_load: data.areaLoad || null,
-        density_source: data.densitySource || null,
-        lambda_value: data.lambdaValue || null,
-        sd_value: data.sdValue || null,
-        mu_dry: data.muDry || null,
-        mu_wet: data.muWet || null,
-        lambda_mu_source: data.lambdaMuSource || null,
-        vkf_classification: data.vkfClassification || null,
-        unit: data.unit,
-        price: data.price,
+        bezeichnung: data.bezeichnung,
+        rohstoff: data.rohstoff || null,
+        hersteller: data.hersteller || null,
+        breite: data.breite || null,
+        hoehe: data.hoehe || null,
+        laenge: data.laenge || null,
+        erscheinungsklasse: data.erscheinungsklasse || null,
+        oberflaeche: data.oberflaeche || null,
+        keywords: data.keywords || null,
+        lambda: data.lambda || null,
+        sd: data.sd || null,
+        muTrocken: data.muTrocken || null,
+        muFeucht: data.muFeucht || null,
+        spezWaermekapazitaet: data.spezWaermekapazitaet || null,
+        quelleBauphysik: data.quelleBauphysik || null,
+        rohdichte: data.rohdichte || null,
+        flaechenlast: data.flaechenlast || null,
+        quelleRohdichte: data.quelleRohdichte || null,
+        aufbau: data.aufbau || null,
+        verleimung: data.verleimung || null,
+        festigkeitsklasse: data.festigkeitsklasse || null,
+        baustoffklasseVKF: data.baustoffklasseVKF || null,
+        baustoffklasseEU: data.baustoffklasseEU || null,
+        baustoffklasseDE: data.baustoffklasseDE || null,
+        zusatzeigenschaft: data.zusatzeigenschaft || null,
+        quelleBaustoffklasse: data.quelleBaustoffklasse || null,
+        rohdichteCharakteristisch: data.rohdichteCharakteristisch || null,
+        abbrandrateEindimensional: data.abbrandrateEindimensional || null,
+        abbrandrateIdeell: data.abbrandrateIdeell || null,
+        materialtypBemessung: data.materialtypBemessung || null,
+        quelleBrandschutzbemessungswerte: data.quelleBrandschutzbemessungswerte || null,
+        dynamischeSteifigkeit: data.dynamischeSteifigkeit || null,
+        ubpID: data.ubpID || null,
+        einheit: data.einheit,
+        richtpreisFertigVerbaut: data.richtpreisFertigVerbaut,
+        schnittstelleKalkulation: data.schnittstelleKalkulation || null,
+        zusatzinfo: data.zusatzinfo || null,
+        zusatzinfo2: data.zusatzinfo2 || null,
+        textur3d: data.textur3d || null,
+        textur2d: data.textur2d || null,
+        produktID: data.produktID || null,
+        ecoZertifizierung: data.ecoZertifizierung || null,
+        oekobilanz: data.oekobilanz || null,
+        blauerEngel: data.blauerEngel || null,
+        produktdatenblatt: data.produktdatenblatt || null,
+        dopLeistungserklaerung: data.dopLeistungserklaerung || null,
+        herstellernachweis: data.herstellernachweis || null,
         created_by: user.id,
       });
 

@@ -17,19 +17,19 @@ export function MaterialsList({ materials }: MaterialsListProps) {
         <thead className="bg-gray-50">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {t('materials.properties.designation')}
+              {t('materials.properties.bezeichnung')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {t('materials.properties.manufacturer')}
+              {t('materials.properties.hersteller')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {t('materials.properties.lambdaValue')}
+              {t('materials.properties.lambda')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {t('materials.properties.vkfClass')}
+              {t('materials.properties.baustoffklasseVKF')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {t('materials.properties.price')}
+              {t('materials.properties.richtpreisFertigVerbaut')}
             </th>
             <th className="px-6 py-3 relative">
               <span className="sr-only">{t('common.edit')}</span>
@@ -40,19 +40,19 @@ export function MaterialsList({ materials }: MaterialsListProps) {
           {materials.map((material) => (
             <tr key={material.id} className="hover:bg-gray-50">
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                {material.designation}
+                {material.bezeichnung}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {material.manufacturer}
+                {material.hersteller}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {material.lambda_value}
+                {material.lambda}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {material.vkf_classification}
+                {material.baustoffklasseVKF}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {material.price} {material.unit}
+                {material.richtpreisFertigVerbaut} {material.einheit}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <div className="flex justify-end space-x-2">
