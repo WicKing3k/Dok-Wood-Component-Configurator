@@ -1,0 +1,99 @@
+{
+  "common": {
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "retry": "Try Again",
+    "retrying": "Retrying...",
+    "attemptsLeft": "attempts left",
+    "back": "Back",
+    "next": "Next"
+  },
+  "nav": {
+    "materials": "Material Database",
+    "configurator": "Component Configurator",
+    "projects": "Projects",
+    "catalog": "Component Catalog",
+    "bauteilkatalog": "Component Catalog"
+  },
+  "materials": {
+    "title": "Material Database",
+    "add": "Add Material",
+    "connectionError": "Connection Error",
+    "fetchError": "Failed to load materials. Please try again later.",
+    "maxRetriesReached": "Maximum retry attempts reached. Please try again later.",
+    "contactSupport": "If the problem persists, please contact support.",
+    "wizard": {
+      "title": "Add Material",
+      "steps": {
+        "basic": "Basic Information",
+        "technical": "Technical Details",
+        "storage": "Storage Details",
+        "pricing": "Pricing Details"
+      }
+    },
+    "properties": {
+      "designation": "Designation",
+      "category": "Category",
+      "articleNumber": "Article Number",
+      "manufacturer": "Manufacturer",
+      "spatialLoad": "Spatial Load",
+      "areaLoad": "Area Load",
+      "densitySource": "Density Source",
+      "lambdaValue": "λ Value",
+      "sdValue": "sd Value",
+      "muDry": "μ (dry)",
+      "muWet": "μ (wet)",
+      "lambdaMuSource": "Source (λ,μ)",
+      "vkfClass": "VKF Classification",
+      "unit": "Unit",
+      "price": "Price",
+      "datasheet": "Datasheet",
+      "minStock": "Minimum Stock",
+      "location": "Storage Location",
+      "supplier": "Supplier",
+      "orderNumber": "Order Number"
+    }
+  },
+  "products": {
+    "title": "Product Database",
+    "add": "Add Product",
+    "connectionError": "Connection Error",
+    "fetchError": "Failed to load products. Please try again later.",
+    "maxRetriesReached": "Maximum retry attempts reached. Please try again later.",
+    "contactSupport": "If the problem persists, please contact support.",
+    "wizard": {
+      "title": "Add Product",
+      "steps": {
+        "basic": "Basic Information",
+        "technical": "Technical Details",
+        "storage": "Storage Details",
+        "pricing": "Pricing Details"
+      }
+    },
+    "properties": {
+      "designation": "Designation",
+      "category": "Category",
+      "articleNumber": "Article Number",
+      "manufacturer": "Manufacturer",
+      "spatialLoad": "Spatial Load",
+      "areaLoad": "Area Load",
+      "densitySource": "Density Source",
+      "lambdaValue": "λ Value",
+      "sdValue": "sd Value",
+      "muDry": "μ (dry)",
+      "muWet": "μ (wet)",
+      "lambdaMuSource": "Source (λ,μ)",
+      "vkfClass": "VKF Classification",
+      "unit": "Unit",
+      "price": "Price",
+      "datasheet": "Datasheet",
+      "minStock": "Minimum Stock",
+      "location": "Storage Location",
+      "supplier": "Supplier",
+      "orderNumber": "Order Number"
+    }
+  }
+}

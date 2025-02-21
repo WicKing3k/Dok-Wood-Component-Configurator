@@ -1,0 +1,99 @@
+{
+  "common": {
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "cancel": "Abbrechen",
+    "loading": "Laden...",
+    "retry": "Erneut versuchen",
+    "retrying": "Versuche erneut...",
+    "attemptsLeft": "Versuche übrig",
+    "back": "Zurück",
+    "next": "Weiter"
+  },
+  "nav": {
+    "materials": "Materialdatenbank",
+    "configurator": "Bauteilkonfigurator",
+    "projects": "Projekte",
+    "catalog": "Bauteilkatalog",
+    "bauteilkatalog": "Bauteilkatalog"
+  },
+  "materials": {
+    "title": "Materialdatenbank",
+    "add": "Material hinzufügen",
+    "connectionError": "Verbindungsfehler",
+    "fetchError": "Materialien konnten nicht geladen werden. Bitte versuchen Sie es später erneut.",
+    "maxRetriesReached": "Maximale Anzahl an Versuchen erreicht. Bitte versuchen Sie es später erneut.",
+    "contactSupport": "Wenn das Problem weiterhin besteht, kontaktieren Sie bitte den Support.",
+    "wizard": {
+      "title": "Material hinzufügen",
+      "steps": {
+        "basic": "Grundinformationen",
+        "technical": "Technische Details",
+        "storage": "Lagerdetails",
+        "pricing": "Preisangaben"
+      }
+    },
+    "properties": {
+      "designation": "Bezeichnung",
+      "category": "Kategorie",
+      "articleNumber": "Artikelnummer",
+      "manufacturer": "Hersteller",
+      "spatialLoad": "Raumlast",
+      "areaLoad": "Flächenlast",
+      "densitySource": "Quelle (Dichte)",
+      "lambdaValue": "λ-Wert",
+      "sdValue": "sd-Wert",
+      "muDry": "μ (trocken)",
+      "muWet": "μ (feucht)",
+      "lambdaMuSource": "Quelle (λ,μ)",
+      "vkfClass": "VKF-Klassierung",
+      "unit": "Einheit",
+      "price": "Preis",
+      "datasheet": "Datenblatt",
+      "minStock": "Mindestbestand",
+      "location": "Lagerort",
+      "supplier": "Lieferant",
+      "orderNumber": "Bestellnummer"
+    }
+  },
+  "products": {
+    "title": "Produktdatenbank",
+    "add": "Produkt hinzufügen",
+    "connectionError": "Verbindungsfehler",
+    "fetchError": "Produkte konnten nicht geladen werden. Bitte versuchen Sie es später erneut.",
+    "maxRetriesReached": "Maximale Anzahl an Versuchen erreicht. Bitte versuchen Sie es später erneut.",
+    "contactSupport": "Wenn das Problem weiterhin besteht, kontaktieren Sie bitte den Support.",
+    "wizard": {
+      "title": "Produkt hinzufügen",
+      "steps": {
+        "basic": "Grundinformationen",
+        "technical": "Technische Details",
+        "storage": "Lagerdetails",
+        "pricing": "Preisangaben"
+      }
+    },
+    "properties": {
+      "designation": "Bezeichnung",
+      "category": "Kategorie",
+      "articleNumber": "Artikelnummer",
+      "manufacturer": "Hersteller",
+      "spatialLoad": "Raumlast",
+      "areaLoad": "Flächenlast",
+      "densitySource": "Quelle (Dichte)",
+      "lambdaValue": "λ-Wert",
+      "sdValue": "sd-Wert",
+      "muDry": "μ (trocken)",
+      "muWet": "μ (feucht)",
+      "lambdaMuSource": "Quelle (λ,μ)",
+      "vkfClass": "VKF-Klassierung",
+      "unit": "Einheit",
+      "price": "Preis",
+      "datasheet": "Datenblatt",
+      "minStock": "Mindestbestand",
+      "location": "Lagerort",
+      "supplier": "Lieferant",
+      "orderNumber": "Bestellnummer"
+    }
+  }
+}
