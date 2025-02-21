@@ -50,7 +50,7 @@ Replace your-supabase-url and your-supabase-anon-key with your actual Supabase p
 npm run dev
 ```
 
-The application will be available at http://localhost:3000.
+The application will be available at http://localhost:5173.
 
 ### Usage
 - Material Database
